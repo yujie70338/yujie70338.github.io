@@ -19,7 +19,7 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
-  header_image = "img/home-bg-jeep.jpg"
+  header_image = "img/home-hard-work-success.jpg"
   SEOTitle = "Marcos Blog"
   description = "Marcos | SRE | Devops | 這裡是 Marcos 的 Blog，與你一起發現更大的世界。"
   keyword = "趙化冰, zhaohuabing, Zhaohuabing, , 趙化冰的網路日誌, 趙化冰的部落格, Zhaohuabing Blog, 部落格, 個人網站, 網際網路, Web, 雲原生, PaaS, Istio, Kubernetes, 微服務, Microservice"
