@@ -1,0 +1,88 @@
+############################
+# Hugo build artifacts
+############################
+/public/
+/resources/
+/resources/_gen/
+hugo_stats.json
+/assets/jsconfig.json
+.hugo_build.lock
+
+############################
+# Hugo executables (local)
+############################
+hugo.exe
+hugo.linux
+hugo.darwin
+
+############################
+# Node / Frontend
+############################
+node_modules/
+dist/
+coverage/
+.grunt/
+build/Release
+bower_components/
+package-lock.json
+
+############################
+# Build / Output directories
+############################
+bin/
+bin-debug/
+bin-release/
+[Bb]in/
+[Oo]bj/
+
+############################
+# Logs & runtime
+############################
+logs/
+*.log
+pids/
+*.pid
+*.seed
+
+############################
+# Locks (generic)
+############################
+*.lock
+.lock-wscript
+
+############################
+# OS / Editor / Backup
+############################
+.DS_Store
+*.swp
+*.markdown~
+*.md~
+
+############################
+# Apache / Server
+############################
+.htpasswd
+
+############################
+# Coverage / Instrumentation
+############################
+lib-cov/
+
+############################
+# Settings / IDE
+############################
+.settings/
+
+############################
+# Executables / packages
+############################
+*.swf
+*.air
+*.ipa
+*.apk
+
+############################
+# AWS publish artifacts
+############################
+.aws-credentials.json
+.awspublish*
