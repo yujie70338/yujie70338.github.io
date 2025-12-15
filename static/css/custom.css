@@ -11,3 +11,26 @@
 .navbar-custom .nav li a:focus {
     color: #000 !important;
 }
+
+/* Mobile dropdown menu - dark background for better contrast */
+@media only screen and (max-width: 767px) {
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-collapse[style],
+    #huxblog_navbar,
+    #huxblog_navbar .navbar-collapse {
+        background: #111 !important;
+    }
+    
+    #huxblog_navbar a {
+        color: #fff !important;
+    }
+    
+    #huxblog_navbar a:hover,
+    #huxblog_navbar a:focus {
+        color: #ddd !important;
+        background: #444 !important;
+    }
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #111 !important;
+}
