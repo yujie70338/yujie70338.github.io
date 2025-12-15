@@ -194,6 +194,32 @@ hugo server
 hugo new post/my-new-post.md
 ```
 
+#### 範例：數學公式文章 front matter
+
+你可以參考以下 front matter 格式來建立新文章（以 2025-07-06-mathematical-formulae.md 為例，放在 content/post/ 目錄下）：
+
+```markdown
+---
+layout:     post
+title:      "Authoring mathematical formulae"
+description: "Cleanwhite theme now has built-in support for authoring mathematical or chemical equations"
+excerpt: "The theme uses Hugo's embedded instance of the KaTeX display engine to render mathematical markup to HTML at build time."
+date:    2025-07-06
+author: "Andreas Deininger"
+image: "/img/2018-05-23-service_2_service_auth/background.jpg"
+publishDate: 2025-07-06
+tags:
+   - Math
+   - KaTeX 
+URL: "/2025/07/06/mathematical-formulae/"
+categories: [ tips ]    
+---
+```
+
+請將新文章放在 `content/post/` 目錄下，檔名建議格式為 `YYYY-MM-DD-title.md`。
+
+---
+
 ### 建構網站
 
 ```bash
