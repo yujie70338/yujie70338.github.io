@@ -205,3 +205,27 @@ hugo
 ## 部署
 
 推送到 GitHub 的 main 分支後，GitHub Actions 會自動建構並部署到 GitHub Pages。
+
+### 設定 GitHub Pages（重要！）
+
+第一次部署時，需要在 GitHub 上正確設定 Pages 來源，否則會顯示 README 而不是網站內容：
+
+1. 打開 GitHub 仓库：https://github.com/yujie70338/yujie70338.github.io
+
+2. 點擊 **Settings**（設置）
+
+3. 在左側菜單找到 **Pages**
+
+4. 在 "Build and deployment" 部分的 **Source** 下拉選單中：
+   - ✅ 選擇：**GitHub Actions**
+   - ❌ 不要選擇："Deploy from a branch"
+   - ❌ 不要選擇預設的 "GitHub Pages Jekyll" 或 "Static HTML" workflow
+
+5. 保存後，GitHub Actions 會自動使用 `.github/workflows/hugo-deploy.yml` 來構建和部署
+
+> ⚠️ **常見問題**：如果推送後網站顯示 README 內容，表示 Pages 設定為 "Deploy from a branch"，需要改為 "GitHub Actions"。
+
+### 查看部署狀態
+
+- 在 GitHub 仓库的 **Actions** 頁面可以查看構建和部署的進度
+- 成功部署後，網站會在 https://yujie70338.github.io/ 上線
