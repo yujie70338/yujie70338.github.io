@@ -1,0 +1,13 @@
+/* Custom styles for navigation bar - make text dark for better visibility */
+.navbar-custom .nav li a {
+    color: #333 !important;
+}
+
+.navbar-custom .navbar-brand {
+    color: #333 !important;
+}
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus {
+    color: #000 !important;
+}
