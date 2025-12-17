@@ -272,7 +272,7 @@ spec:
 
 在直接強制執行 (Enforce) 之前，最保險的部署方式是先開啟 **Dry Run** 模式。這允許我們觀察現有環境中有多少違規資源，而不實際阻擋請求。
 
-```
+```yaml
 # 3-constraint.yaml
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sRequiredLabels

@@ -19,7 +19,7 @@ categories: ["Tech"]
 
 理解 Kubernetes 安全機制的轉變，是維護舊叢集或規劃升級的基礎。
 
-### 1.1 PodSecurityPolicy (PSP) - 已棄用的控制機制
+### 1.1 PodSecurityPolicy (PSP) - 已棄用的機制
 
 **PodSecurityPolicy (PSP)** 曾是 Kubernetes 控制 Pod 權限（如 `privileged`、`hostPath`）的核心機制。然而，因設計上的數項缺陷，最終導致其被淘汰：
 
@@ -203,7 +203,7 @@ plugins:
 
 生產環境中，PSS 的**版本釘選**是常被忽略卻關鍵的設定。
 
-若 Label 未指定版本，PSA **預設使用 `latest`** 規則。隨著 Kubernetes 升級，PSS 標準（特別是 Restricted）可能變嚴，導致 pod 可能在叢集升級後突遭拒絕。強烈建議明確指定版本號（如 `v1.29`），確保叢集升級後仍依舊版規則檢查，保留適配緩衝時間。
+若 Label 未指定版本，PSA **預設使用 `latest`** 規則。隨著 Kubernetes 升級，PSS 標準（特別是 Restricted）可能更動，導致 pod 可能在叢集升級後突遭拒絕。建議可以明確指定版本號（如 `v1.29`），確保叢集升級後仍依舊版規則檢查，保留版本升級的緩衝時間。
 
 ```yaml
 apiVersion: v1
