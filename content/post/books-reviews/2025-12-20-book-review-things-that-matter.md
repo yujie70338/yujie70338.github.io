@@ -2,11 +2,11 @@
 title: "📗〔讀書心得〕-Things That Matter"
 subtitle: ""
 description: "《Things That Matter》探討如何透過有意圖地生活和減少分心來避免後悔，並實現人生目標。"
-date: 2025-12-21
+date: 2025-12-20
 author: "Yujie Zheng"
 image: ""
 tags: ["JoshuaBecker", "BookReview", "ThingsThatMatter" ]
-categories: ["books-reviews"]
+categories: [ "books-reviews" ]
 ---
 
 # 📗〔讀書心得〕-Things That Matter
@@ -100,9 +100,6 @@ categories: ["books-reviews"]
 - 總結來說，《Things That Matter》不僅是一本關於極簡主義的書，更是一份**追求生命意義的行動清單**。作者 Joshua Becker 提醒我們，活出滿足且少有遺憾的人生的秘訣在於「有意識的選擇」：我們必須在每天的生活中，主動將那些不重要的次要追求放在其次，並專注於真正重要的目標。（也就是使用 `艾森豪矩陣` 去管理我們的人生）
 - 儘管這本書在個人主權（右派思維）與集體責任（左派傾向）之間存在著邏輯上的拉扯，但我認為這本書的核心價值在於邀請我們拿回自己的主控權。提醒讀者要將金錢和物質視為達成目標的手段，而非最終目的。選擇對重要的事情說「好」，並勇敢地對無數個次要的誘惑說「不」，達成對自己的重新掌握**，**並將騰出的時間與專注力，轉化為能夠對世界產生積極影響的「意圖性生活」。
 
-```bash
-This is the beginning of my new commitment to pursue things that matter. Today, I will remove distractions so that I can
-```
 
 # Extended Reference ＆ FYI
 
@@ -111,6 +108,7 @@ This is the beginning of my new commitment to pursue things that matter. Today, 
 - [讀這本書的時候讓我想到這一步**Asmongold的**影片](https://www.youtube.com/watch?v=YnbOkFCq9ws)
 - https://www.youtube.com/@JoshuaBecker
 - https://www.becomingminimalist.com/
+- [Things That Matter: Overcoming Distraction to Pursue a More Meaningful Life](https://www.amazon.com/Things-That-Matter-Overcoming-Distraction/dp/0593193970)
 
 ---
 
