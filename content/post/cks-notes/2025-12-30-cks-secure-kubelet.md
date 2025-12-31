@@ -1,7 +1,7 @@
 ---
-title: "〔〔CKS 筆記整理〕強化防禦 Kubelet ：探討 Kubelet Port 10250 的潛藏風險和防護策略"
+title: "〔〔CKS 筆記整理〕強化防禦 Kubelet ：探討 Kubelet Port 10250/ 10255 的潛藏風險和防護策略"
 subtitle: ""
-description: "本文將解析 Kubelet Port 10250 的功能與潛在風險。"
+description: "本文將解析 Kubelet 的潛在風險，介紹如何透過「權限委派（Delegation）」機制加強驗證，並說明 Port 10250 10255 的安全疑慮與防護建議。"
 date: 2025-12-30
 author: "Yujie Zheng"
 image: ""
@@ -9,7 +9,7 @@ tags: ["K8S", "Kubernetes", "Kubelet", "CKS"]
 categories: ["Tech"]
 ---
 
-# 〔CKS 筆記整理〕強化防禦 Kubelet ：探討 Kubelet Port 10250 的潛藏風險和防護策略
+# 〔CKS 筆記整理〕強化防禦 Kubelet ：探討 Kubelet Port 10250 / 10255 的潛藏風險和防護策略
 
 ## 摘要
 
