@@ -1,0 +1,17 @@
+{
+  "skill_name": "skill-post-rewriter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "幫我改寫這篇文章 content/post/books-reviews/2026-03-28-book-review-technical-analysis-of-the-financial-markets-1.md",
+      "expected_output": "Front matter filled (title with 📗 prefix, description ≤150 chars, PascalCase tags). Body restructured into: 摘要 → 我的 takeaway (未知/新奇觀點 drafted, 我喜歡的 quote left blank) → 總結 → Extended Reference. Footer preserved. User's voice maintained.",
+      "files": ["content/post/books-reviews/2026-03-28-book-review-technical-analysis-of-the-financial-markets-1.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "幫我潤飾並 SEO 優化 content/post/books-reviews/2025-12-20-book-review-things-that-matter.md（假設 front matter 的 title/description/tags 是空的）",
+      "expected_output": "Front matter filled correctly. Existing well-structured body preserved and polished (not over-rewritten since it's already in good shape). Footer preserved.",
+      "files": ["content/post/books-reviews/2025-12-20-book-review-things-that-matter.md"]
+    }
+  ]
+}

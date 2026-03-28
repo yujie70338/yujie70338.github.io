@@ -1,5 +1,5 @@
 ---
-name: new-post-creator
+name: skill-new-post-creator
 description: >
   Creates a new Hugo blog post file under content/post/ with the correct front matter template.
   Use this skill whenever the user wants to create, add, or start a new blog post, article, or note —
@@ -9,7 +9,7 @@ description: >
   whenever they want a blank post scaffold created in the blog.
 ---
 
-# New Post Creator
+# Skill: New Post Creator
 
 This skill creates a properly structured Hugo blog post file inside `content/post/` of the blog at `/Users/yujiezheng/yujie70338.github.io`.
 
