@@ -65,6 +65,18 @@ Tags should be:
 
 Transform the raw content into a structured article. The exact structure depends on the category.
 
+### 條列點與段落敘述規則（所有類別適用）
+
+- 條列點（清單）僅於有明顯分項、步驟、重點整理時使用。
+- 其餘內容維持流暢段落式敘述，避免全篇過度條列化。
+- 每個 section（如「摘要」、「takeaway」）可混用段落與條列，依內容複雜度與可讀性判斷。
+- 若遇到不確定是否該條列或段落的情境，AI 需主動詢問用戶。
+
+（範例：
+摘要、背景、理論基礎等以段落為主；明確的優勢、步驟、框架、重點整理可用條列輔助。）
+
+請務必根據內容語境靈活判斷，並優先維持文章自然流暢的閱讀體驗。
+
 ### For `books-reviews` category
 
 ```markdown
@@ -74,7 +86,7 @@ Transform the raw content into a structured article. The exact structure depends
 
 - [摘要](#摘要)
 - [我的 takeaway](#我的-takeaway)
-  - [未知 / 新奇的觀點](#未知--新奇的觀點)
+  - [學習到的觀點](#學習到的觀點)
   - [我喜歡的 quote](#我喜歡的-quote)
 - [總結](#總結)
 - [Extended Reference ＆ FYI](#extended-reference--fyi)
@@ -88,7 +100,7 @@ Bold key concepts. Mention the author's full name.}
 
 ## 我的 takeaway
 
-### 未知 / 新奇的觀點
+### 學習到的觀點
 
 {Draft insights from the content as a numbered list.
 Each item format:
