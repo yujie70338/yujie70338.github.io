@@ -1,9 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#   "Pillow>=10.0",
+# ]
+# ///
 """
 Convert an image to WebP format.
 
 Usage:
-  python3 picture-convert-to-webp.py PATH/PictureName.png
+  uv run picture-convert-to-webp.py PATH/PictureName.png
 
 The output will be saved as:
   PATH/PictureName.webp
@@ -107,7 +113,7 @@ def convert_to_webp(input_path: str) -> None:
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python3 picture-convert-to-webp.py PATH/PictureName.png")
+        print("Usage: uv run picture-convert-to-webp.py PATH/PictureName.png")
         sys.exit(1)
 
     input_path = sys.argv[1]
