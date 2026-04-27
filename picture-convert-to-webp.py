@@ -6,13 +6,14 @@
 # ]
 # ///
 """
-Convert an image to WebP format.
+Convert image(s) to WebP format.
 
 Usage:
-  uv run picture-convert-to-webp.py PATH/PictureName.png
+  uv run picture-convert-to-webp.py PATH/PictureName.png   # single file
+  uv run picture-convert-to-webp.py PATH/to/directory/     # all images in directory
 
 The output will be saved as:
-  PATH/PictureName.webp
+  PATH/PictureName.webp  (next to the original file)
 
 Supports common image formats (png, jpg, jpeg, bmp, tiff, gif, etc.).
 
@@ -26,7 +27,10 @@ commenting or uncommenting the options.
 
 import sys
 import os
+from pathlib import Path
 from PIL import Image, ImageOps
+
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".tif", ".gif", ".webp"}
 
 # ============================================================
 # BASIC WEBP SETTINGS
@@ -58,6 +62,11 @@ SKIP_IF_LARGER = True
 #   True  -> 若 .webp 已存在，直接覆蓋
 #   False -> 已存在時直接跳過
 OVERWRITE_EXISTING = True
+
+# DELETE_ORIGINAL:
+#   True  -> 轉檔成功後，刪除原始檔案
+#   False -> 保留原始檔案
+DELETE_ORIGINAL = True
 
 # ============================================================
 
@@ -110,19 +119,59 @@ def convert_to_webp(input_path: str) -> None:
     ratio = webp_size / original_size if original_size else 0
     print(f"{abs_out} | size: {webp_size / 1024:.1f} KB | ratio: {ratio:.2%}")
 
+    if DELETE_ORIGINAL:
+        os.remove(input_path)
+        print(f"Deleted original: {input_path}")
+
+
+def convert_directory(dir_path: str) -> None:
+    directory = Path(dir_path)
+    candidates = [
+        p for p in directory.iterdir()
+        if p.is_file()
+        and p.suffix.lower() in IMAGE_EXTENSIONS
+        and p.suffix.lower() != ".webp"
+    ]
+
+    if not candidates:
+        print(f"No convertible images found in: {dir_path}")
+        return
+
+    print(f"Found {len(candidates)} image(s) in {dir_path}")
+    ok = skipped = errors = 0
+    for p in sorted(candidates):
+        try:
+            convert_to_webp(str(p))
+            ok += 1
+        except Exception as e:
+            print(f"Error ({p.name}): {e}")
+            errors += 1
+        else:
+            skipped_marker = False  # convert_to_webp prints its own skip messages
+
+    print(f"\nDone — converted: {ok}, errors: {errors}")
+
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: uv run picture-convert-to-webp.py PATH/PictureName.png")
+        print("Usage:")
+        print("  uv run picture-convert-to-webp.py PATH/PictureName.png")
+        print("  uv run picture-convert-to-webp.py PATH/to/directory/")
         sys.exit(1)
 
-    input_path = sys.argv[1]
+    target = sys.argv[1]
 
-    try:
-        convert_to_webp(input_path)
-    except Exception as e:
-        print(f"Error: {e}")
-        sys.exit(2)
+    if os.path.isdir(target):
+        convert_directory(target)
+    elif os.path.isfile(target):
+        try:
+            convert_to_webp(target)
+        except Exception as e:
+            print(f"Error: {e}")
+            sys.exit(2)
+    else:
+        print(f"Error: path not found: {target}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

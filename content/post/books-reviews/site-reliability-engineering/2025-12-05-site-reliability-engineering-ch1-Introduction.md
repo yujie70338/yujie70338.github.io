@@ -1,5 +1,5 @@
 ---
-title: "📘〔讀書心得〕〔Site Reliability Engineering〕01 | 告別傳統維運，擁抱軟體工程化可靠性"
+title: "📗〔讀書心得〕〔Site Reliability Engineering〕01 | 告別傳統維運，擁抱軟體工程化可靠性"
 date: 2025-12-05
 description: "Site Reliability Engineering 是 Google 以軟體工程思維管理系統的方法，透過自動化、50% 運維上限與錯誤預算，平衡穩定性與功能發布速度。本文聚焦第一章重點，涵蓋 SLO、監控、應急 Playbook 與容量規劃，助你有效了解 SRE 理念，打造高可用的服務。"
 author: "Yujie Zheng"
