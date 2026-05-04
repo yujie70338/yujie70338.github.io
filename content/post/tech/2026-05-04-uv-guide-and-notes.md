@@ -1,5 +1,5 @@
 ---
-title: "📝〔筆記整理〕uv run 完整指南與使用筆記"
+title: "📝〔筆記整理〕uv run 學習筆記"
 subtitle: ""
 description: "深入介紹 Astral 開發的 uv run 工具：自動虛擬環境管理、PEP 723 單一腳本依賴支援，以及比 python3 更高效的現代 Python 開發工作流程筆記整理。"
 date: 2026-05-04
@@ -9,9 +9,9 @@ tags: ["Python", "Uv", "PackageManagement", "PEP723", "DeveloperTools"]
 categories: ["tech"]
 ---
 
-# 📝〔筆記整理〕uv run 完整指南與使用筆記
+# 📝〔筆記整理〕uv run 學習筆記
 
-- [📝〔筆記整理〕uv run 完整指南與使用筆記](#筆記整理uv-run-完整指南與使用筆記)
+- [📝〔筆記整理〕uv run 學習筆記](#筆記整理uv-run-學習筆記)
   - [前言](#前言)
   - [什麼是 uv run？](#什麼是-uv-run)
   - [為何 uv run 比 `python3` 更好？](#為何-uv-run-比-python3-更好)
@@ -46,7 +46,7 @@ categories: ["tech"]
 
 ## `uv run` 的推出時間與解決的問題
 
-`uv` 最初於 2024 年 2 月發布，當時主要作為 `pip` 和 `pip-tools` 的高速替代品。包含 `uv run` 在內的專案管理、工具管理等一系列擴展功能則是在 2024 年 8 月的一次重大更新中推出的，將 `uv` 從一個安裝器擴展為一個全方位的 Python 開發工具鏈。
+`uv` 最初於 2024 年 2 月發布，當時主要作為 `pip` 和 `pip-tools` 的替代品。包含 `uv run` 在內的專案管理、工具管理等一系列擴展功能則是在 2024 年 8 月的一次重大更新中推出的，將 `uv` 從一個安裝器擴展為一個全方位的 Python 開發工具鏈。
 
 `uv run` 主要解決了 Python 開發中的幾個長期痛點：
 
