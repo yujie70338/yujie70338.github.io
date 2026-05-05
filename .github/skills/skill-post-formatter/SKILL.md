@@ -3,6 +3,7 @@ name: skill-post-formatter
 description: >
   整理並格式化現有 Hugo 部落格草稿：補齊 front matter（title、description、tags）、新增 TOC、
   統一清單符號、修正明顯錯字與簡體字，但完全不改寫用戶的原始內容與段落結構。
+  會自動參考同一資料夾下的其他文章（若為系列文章），以保持標題格式與 tags 的一致性。
   當使用者說「整理格式」、「補 front matter」、「format this post」、「只整理不改寫」、
   「幫我填 metadata」、「加 TOC」，或擁有空白 front matter 但文章結構已完整時觸發此技能。
   與 skill-post-rewriter 的本質差異：rewriter 會重寫段落與重組章節結構；formatter 只做格式與 metadata 整理，
@@ -28,19 +29,70 @@ description: >
 
 ---
 
+## Step 0：分析同資料夾下的相關文章（可選但建議執行）
+
+在填寫 front matter 之前，先檢查同一資料夾下是否有其他文章，以保持格式一致性：
+
+### 執行步驟：
+
+1. **列出同資料夾下的其他 .md 檔案**  
+   使用 `list_dir` 工具列出當前文章所在資料夾的所有檔案。
+
+2. **讀取相關文章的 front matter**  
+   特別注意：
+   - **標題格式模式**：是否為系列文章（如 `Ch1`, `Ch2`, `Ch3`）？標題結構是什麼？
+   - **Tags 命名慣例**：使用的標籤格式（如 `SiteReliabilityEngineering` vs `SRE`，`GoogleSRE` vs `DevOps`）
+   - **Emoji 前綴**：是否一致（如 `📗〔讀書心得〕-` 還是 `📗〔讀書心得〕`）
+
+3. **識別系列文章模式**  
+   若檔名或標題中包含 `ch1`, `ch2`, `ch3` 或類似編號模式，這是系列文章，應：
+   - **標題格式一致**：遵循其他章節的標題模板（例如：`📗〔讀書心得〕- SRE Ch5：[主題]`）
+   - **Tags 一致**：使用與其他章節相同的核心標籤（如都使用 `SiteReliabilityEngineering`、`GoogleSRE`）
+
+4. **記錄發現的慣例**  
+   將分析結果用於 Step 1 的 front matter 生成。
+
+### 範例分析：
+
+假設同資料夾下有：
+```
+- 2025-12-05-site-reliability-engineering-ch1-Introduction.md
+  title: "📗〔讀書心得〕- SRE Ch1：Google 如何用軟體工程思維打造可靠系統"
+  tags: ["BookReview", "SiteReliabilityEngineering", "GoogleSRE", "DevOps", "SystemDesign"]
+
+- 2026-04-28-site-reliability-engineering-ch3-embracing-risk.md
+  title: "📗〔讀書心得〕- SRE Ch3：擁抱風險與錯誤預算實務"
+  tags: ["BookReview", "SiteReliabilityEngineering", "ErrorBudget", "SLO", "GoogleSRE"]
+```
+
+**發現的慣例：**
+- ✅ 系列文章格式：`📗〔讀書心得〕- SRE Ch[編號]：[簡潔主題]`（有破折號 `-`）
+- ✅ 核心 tags：`BookReview`, `SiteReliabilityEngineering`, `GoogleSRE`（每篇都有）
+- ✅ 主題 tags：根據該章節內容添加 2-3 個特定標籤
+
+**套用到新文章：**  
+若當前文章是 Ch5，標題應為：`📗〔讀書心得〕- SRE Ch5：[該章主題]`，而非 `📗〔讀書心得〕SRE 第五章：...`
+
+### 何時跳過此步驟：
+
+- 若同資料夾下**沒有其他 .md 檔案**，直接跳到 Step 1
+- 若文章不屬於系列（無明顯關聯性），可選擇性跳過
+
+---
+
 ## Step 1：填寫 front matter
 
-根據文章內容，**重新產生所有以下欄位**（即使已有內容也覆蓋）：
+根據文章內容**以及 Step 0 收集的格式慣例**，**重新產生所有以下欄位**（即使已有內容也覆蓋）：
 
 | 欄位 | 處理方式 |
 |------|----------|
-| `title` | SEO 友善標題，≤30 中文字，加上分類 emoji 前綴（見下表） |
+| `title` | SEO 友善標題，≤30 中文字，加上分類 emoji 前綴（見下表）。**若是系列文章，遵循 Step 0 發現的標題格式**。 |
 | `subtitle` | 保留 `""` 不變 |
 | `description` | ≤150 字元，包含主要關鍵字，內容要能吸引搜尋結果點閱 |
 | `date` | **保持現有值不變** |
 | `author` | **保持 `"Yujie Zheng"` 不變** |
 | `image` | 保留 `""` 不變 |
-| `tags` | 產生可重複使用的 PascalCase 標籤，3–5 個（見標籤規則） |
+| `tags` | 產生可重複使用的 PascalCase 標籤，3–5 個（見標籤規則）。**若是系列文章，優先使用 Step 0 發現的核心標籤**。 |
 | `categories` | **保持現有值不變** |
 
 ### 分類 emoji 前綴表
@@ -59,6 +111,24 @@ description: >
 - **PascalCase**：如 `BookReview`, `TechnicalAnalysis`, `Kubernetes`
 - **廣泛 + 具體混用**：同時包含廣義標籤（如 `BookReview`, `Investment`）和主題標籤（如 `TechnicalAnalysis`, `DowTheory`）
 - 每篇 **3–5 個**標籤
+- **系列文章一致性**：若 Step 0 發現了系列文章模式，優先使用該系列的核心標籤
+  - 例如：SRE 系列文章都使用 `BookReview`, `SiteReliabilityEngineering`, `GoogleSRE`
+  - 再根據該章節主題添加 2-3 個特定標籤（如 `Toil`, `Automation`, `ErrorBudget` 等）
+
+### Title 格式（系列文章）
+
+若 Step 0 識別出系列文章模式，標題應遵循既有格式：
+
+| 系列類型 | 格式範例 |
+|---------|----------|
+| 書籍章節 | `📗〔讀書心得〕- SRE Ch5：消滅瑣事與自動化實務` |
+| 技術系列 | `📝〔筆記整理〕Kubernetes 系列 (5)：Pod 調度機制` |
+| 投資系列 | `💰技術分析基礎 — 第三篇：趨勢線繪製` |
+
+**關鍵點**：
+- 編號格式一致（`Ch1`, `Ch2` 或 `第一篇`, `第二篇`，或 `(1)`, `(2)`）
+- 破折號/分隔符一致（有些系列用 `-`，有些用 `—`，有些不用）
+- 簡潔主題（≤15 中文字），而非冗長的完整描述
 
 ---
 
@@ -201,8 +271,10 @@ Extended Reference 章節的標題層級為 **H1**（`#`），這與部落格現
 
 將整個檔案以更新後的版本覆蓋寫入。完成後告知使用者：
 
-1. 填入了哪些 front matter 欄位的值（title、description、tags）
-2. H1 是否有更新
-3. TOC 是否已產生/更新
-4. 有哪些格式修正（如清單符號、簡體字修正）
-5. 是否新增了 Extended Reference 章節
+1. **（若執行 Step 0）同資料夾參考情況**：是否發現系列文章模式、參考了哪些文章的格式
+2. 填入了哪些 front matter 欄位的值（title、description、tags）
+3. **（若是系列文章）格式調整**：說明為了與同系列其他文章保持一致而做的調整（如標題格式、核心 tags）
+4. H1 是否有更新
+5. TOC 是否已產生/更新
+6. 有哪些格式修正（如清單符號、簡體字修正、bold 渲染修正）
+7. 是否新增了 Extended Reference 章節
